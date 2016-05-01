@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <title>test_HtM</title>
         <!--引入Three.js-->
+        <script src="js/jQuery-2.2.0.min.js"></script>
         <script src="js/Three.js"></script>
         <script src="js/STLLoader.js"></script>
         <script src="js/gui.js"></script>
-  
+        
         <style type="text/css">
             div#canvas3d{
                   border: none;
@@ -19,7 +20,7 @@
         </style>
     </head>
 
-    <body onload='threeStart();'>
+    <body onload=' getJsonAndPrase()'>
         <!--盛放canvas的容器-->
         <div id="canvas3d"></div>
     </body>

@@ -1,5 +1,6 @@
             //开启Three.js渲染器
              var renderer;//声明全局变量（对象）
+             var dataone;
              function initThree() {
                 width = document.getElementById('canvas3d').clientWidth;//获取画布「canvas3d」的宽
                 height = document.getElementById('canvas3d').clientHeight;//获取画布「canvas3d」的高
@@ -26,24 +27,25 @@
               var scene;
               function initScene() {   
                 scene = new THREE.Scene();
+                //对场景进行大小变化以求得适应的大小
+                scene.scale.set( 0.1, 0.1, 0.1); 
               }
-
-              //设置光源
-              var light;
-              function initLight() { 
-                light = new THREE.DirectionalLight(0xFFFFFF, 1.0, 0);//设置平行光源
-                light.position.set( 200, 200, 200 );//设置光源向量
-                scene.add(light);// 追加光源到场景
-              }
+              function getJsonAndPrase(){
+               $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/Scaraconfig.json", function(data) { 
+                console.log(1);
+                alert(data.name); 
+                }); 
+               };
                //设置物体
               var sphere;
               function initObject(){  
+                getJsonAndPrase();
                 var loader = new THREE.STLLoader();
                 loader.load( 'http://7xt8mz.com2.z0.glb.clouddn.com/scara/linktwo.stl', function ( geometry ) {
                 var mesh = new THREE.Mesh( geometry );
                 mesh.position.set( 0, 0, 0 );
                 mesh.rotation.set( 0, 0, 0 );
-                mesh.scale.set( 0.3, 0.3, 0.3);
+
                 mesh.castShadow = true;
                 mesh.receiveShadow = true;
                 scene.add( mesh );
@@ -57,7 +59,5 @@
                 initThree();
                 initCamera();
                 initScene();   
-                // initLight();
                 initObject();
- 
               }
