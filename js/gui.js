@@ -30,15 +30,18 @@
                 //对场景进行大小变化以求得适应的大小
                 scene.scale.set( 0.1, 0.1, 0.1); 
               }
-              function getJsonAndPrase(){
-               $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/Scaraconfig.json", function(data) { 
+              function abc(data,status) { 
                 console.log(1);
+                console.log(status);
                 alert(data.name); 
-                }); 
+                }; 
+              function getJsonAndPrase(){
+               $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/Scaraconfig.json",abc)
                };
                //设置物体
               var sphere;
-              function initObject(){  
+              function initObject(){
+                //异步请求，每一个回调函数搞定后，都需要调用renderer的函数。因此首先先生成场景。写出矩阵计算函数
                 getJsonAndPrase();
                 var loader = new THREE.STLLoader();
                 loader.load( 'http://7xt8mz.com2.z0.glb.clouddn.com/scara/linktwo.stl', function ( geometry ) {
