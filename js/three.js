@@ -8567,8 +8567,7 @@ THREE.Object3D.prototype = {
 
 	applyMatrix: function ( matrix ) {
 
-		this.matrix.multiplyMatrices( matrix, this.matrix );
-
+	    this.matrix.multiplyMatrices( matrix, this.matrix );
 		this.matrix.decompose( this.position, this.quaternion, this.scale );
 
 	},

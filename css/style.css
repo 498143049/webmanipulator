@@ -1,0 +1,138 @@
+*{
+    padding:0;
+    margin:0;
+    color: white;
+}
+html,body{
+    background: url(../blur-bg.jpg);
+    height: 100%;
+}
+    @media screen and (max-device-width:680px){
+        .RightOne,.RightThree,.PageTitle{
+            display: none;
+        }
+        .Right{
+            width: 300px;
+        }
+        .RightTwo{
+            background: none;
+        }
+        .LittleTitle{
+            display: none;
+        }
+        div#canvas3d{
+            width: 100%;
+            height: 100%;
+            margin-left: 0px;
+        }
+        #ex1Slider .slider-selection {
+            background: none;
+        }
+        .CanvasTitle{
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+    @media screen and (min-device-width:1000px){
+        .Right{
+            width: 30%;
+        }
+        div#canvas3d{
+            width: 69%;
+            height: 611px;
+            margin-left: 20px;
+        }
+        .RightOne,.RightTwo,.RightThree{
+            margin: 10px 20px 15px;
+            background: url(../images/bgPart2.png);
+        }
+        #ex1Slider .slider-selection {
+            background: #BABABA;
+        }
+        .CanvasTitle{
+            width: 69%;
+            margin-left: 20px;
+        }
+    }
+
+            div#canvas3d{
+                margin-top: -10px;
+                border: none;
+                cursor: move;
+                background-color: #EEEEEE;
+            }
+            .PageTitle{
+                text-align: center;
+                background: url(../images/bgPart1.png) repeat;
+            }
+            .PageTitle p{
+                padding: 10px 0;
+                font-size: 30px;
+            }
+            
+            .RightOne table{
+                text-align: center;
+                border: none;
+            }
+            .RightOne table td{
+                border: none!important;
+            }
+            .sliderPart{
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            #ex1SliderVal,#ex2SliderVal,#ex3SliderVal,#ex4SliderVal{
+                width: 50px;
+                color: #333;
+                text-align: center;
+            }
+            .sliderPart span{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .LittleTitle{
+                background: none;
+                border-bottom: 1px solid rgba(0,0,0,.12);
+                box-shadow: 0 1px 0 0 rgba(255,255,255,.12);
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+                padding: 10px 0;
+                text-align: center;
+                color: white;
+                font-size: 16px;
+            }
+            .Inverse p{
+                text-align: center;
+            }
+            .Inverse input{
+                width: 70px;
+                color: #333;
+                text-align: center;
+            }
+            .InverseTitle{
+                font-weight: 600;
+            }
+            .InverseBtn{
+                width: 100px;
+                margin: 0 auto;
+                display: block;
+            }
+            .Inverse{
+                padding-bottom: 10px;
+            }
+            .Right{
+                position: absolute;
+                right: 0;
+                top: 64px;
+            }
+            .CanvasTitle{
+                background: url(../images/bgPart2.png);
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(0,0,0,.12);
+                box-shadow: 0 1px 0 0 rgba(255,255,255,.12);
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+            }
