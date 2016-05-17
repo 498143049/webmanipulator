@@ -70,7 +70,41 @@ function change(theta){
     }
   }
 }
+function Add_Event() {
+  $("#canvas3d").bind('mousewheel', function(event) {
+    // event = event || window.event;
+    event.preventDefault();
+    var delta = 0;
+    if (event.wheelDelta) {
+      // WebKit / Opera / Explorer 9
+    delta = event.wheelDelta && (event.wheelDelta > 0 ? "mouseup" : "mousedown");
+    console.log(direction);
+    } else if (event.detail) {
+      // Firefox
+      delta = event.detail * 10;
+    }
+    console.log(delta);
+    return false;
+  });
+}
+function zoom ( delta1 ) {
+   var delta=new THREE.Vector3( 0, 0, delta1 )
+    center = new THREE.Vector3();
+    var normalMatrix = new THREE.Matrix3();
+    var distance = camera.position.distanceTo( center );
 
+    delta.multiplyScalar( distance * 0.001 );
+
+    if ( delta.length() > distance ) return;
+
+    delta.applyMatrix3( normalMatrix.getNormalMatrix( camera.matrix ) );
+
+    camera.position.add( delta );
+
+    rendererFun();
+
+  };
 function Load_config() {
   $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/ScaraconfigNew.json", Load_init)
+  Add_Event();
 };

@@ -64,6 +64,7 @@ html,body{
             .PageTitle{
                 text-align: center;
                 background: url(../images/bgPart1.png) repeat;
+                font-family: "Microsoft YaHei";
             }
             .PageTitle p{
                 padding: 10px 0;

@@ -26,19 +26,9 @@ function initCamera() {
 
 function initScene() {
   scene = new THREE.Scene();
-  // var plane = new THREE.Mesh(
-  //   new THREE.PlaneBufferGeometry(40, 40),
-  //   new THREE.MeshPhongMaterial({
-  //     color: 0x999999,
-  //     specular: 0x101010
-  //   })
-  // );
-  // plane.rotation.x = -Math.PI / 2;
-  // plane.position.y = -0.5;
-  // scene.add(plane);
-
-  // plane.receiveShadow = true;
-
+  var grid = new THREE.GridHelper( 1000, 10 );
+  grid.rotation.set(1.58,0,0);
+  scene.add( grid );
   //对场景进行大小变化以求得适应的大小
   scene.scale.set(0.06, 0.06, 0.06);
   scene.rotation.set(-1.58,0,0);
