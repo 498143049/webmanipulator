@@ -104,6 +104,71 @@ function zoom ( delta1 ) {
     rendererFun();
 
   };
+  
+  // function onMouseDown( event ) {
+
+  //   if ( scope.enabled === false ) return;
+
+  //   if ( event.button === 0 ) {
+
+  //     state = STATE.ROTATE;
+
+  //   } else if ( event.button === 1 ) {
+
+  //     state = STATE.ZOOM;
+
+  //   } else if ( event.button === 2 ) {
+
+  //     state = STATE.PAN;
+
+  //   }
+
+  //   pointerOld.set( event.clientX, event.clientY );
+
+  //   domElement.addEventListener( 'mousemove', onMouseMove, false );
+  //   domElement.addEventListener( 'mouseup', onMouseUp, false );
+  //   domElement.addEventListener( 'mouseout', onMouseUp, false );
+  //   domElement.addEventListener( 'dblclick', onMouseUp, false );
+
+  // }
+
+  // function onMouseMove( event ) {
+
+  //   if ( scope.enabled === false ) return;
+
+  //   pointer.set( event.clientX, event.clientY );
+
+  //   var movementX = pointer.x - pointerOld.x;
+  //   var movementY = pointer.y - pointerOld.y;
+
+  //   if ( state === STATE.ROTATE ) {
+
+  //     scope.rotate( new THREE.Vector3( - movementX * 0.005, - movementY * 0.005, 0 ) );
+
+  //   } else if ( state === STATE.ZOOM ) {
+
+  //     scope.zoom( new THREE.Vector3( 0, 0, movementY ) );
+
+  //   } else if ( state === STATE.PAN ) {
+
+  //     scope.pan( new THREE.Vector3( - movementX, movementY, 0 ) );
+
+  //   }
+
+  //   pointerOld.set( event.clientX, event.clientY );
+
+  // }
+
+  // function onMouseUp( event ) {
+
+  //   domElement.removeEventListener( 'mousemove', onMouseMove, false );
+  //   domElement.removeEventListener( 'mouseup', onMouseUp, false );
+  //   domElement.removeEventListener( 'mouseout', onMouseUp, false );
+  //   domElement.removeEventListener( 'dblclick', onMouseUp, false );
+
+  //   state = STATE.NONE;
+
+  // }
 function Load_config() {
   $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/ScaraconfigNew.json", Load_init)
   Add_Event();

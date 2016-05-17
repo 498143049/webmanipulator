@@ -30,7 +30,7 @@ function initScene() {
   grid.rotation.set(1.58,0,0);
   scene.add( grid );
   //对场景进行大小变化以求得适应的大小
-  scene.scale.set(0.06, 0.06, 0.06);
+  scene.scale.set(0.06, 0.06, 0.08);
   scene.rotation.set(-1.58,0,0);
 }
 //渲染对象
