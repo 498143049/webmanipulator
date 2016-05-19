@@ -1,64 +1,50 @@
 $(function(){
             var arr = [0,0,0,0];
-            arr.push = $('#ex1SliderVal').val();
-            arr.push = $('#ex2SliderVal').val();
-            arr.push = $('#ex3SliderVal').val();
-            arr.push = $('#ex4SliderVal').val();
+            console.log(arr);
+            arr[0] =  parseFloat($('#ex1SliderVal').val());
+            arr[1] =  parseFloat($('#ex2SliderVal').val());
+            arr[2] =  parseFloat($('#ex3SliderVal').val());
+            arr[3] =  parseFloat($('#ex4SliderVal').val());
+            console.log(arr);
+            function RightSlider(num){
+                var mySlider;
+                $("#ex" + num).slider();
+                $("#ex" + num).on("slide", function(slideEvt) {
+                    $("#ex" + num + "SliderVal").val(slideEvt.value);
+                    arr[num - 1] = $('#ex' + num + 'SliderVal').val();
+                    change(arr);
+                    updateobj();
+                });
+                mySlider = $("#ex" + num).slider();
+                $("#ex" + num + "SliderVal").change(function(){
+                    var Oldarr = arr.slice(0);
+                    Oldarr[num - 1]=mySlider.slider('getValue');
+                    mySlider.slider('setValue',parseFloat($('#ex' + num + 'SliderVal').val()));
+                    arr[num - 1] = parseFloat($('#ex' + num + 'SliderVal').val());
+                    changeArray(Oldarr,arr);
+                    // change(arr);
+                    // updateobj();
+                });
+                // $("#ex" + num).on('slideStop',function(){
+                //     arr[num - 1] = $('#ex' + num + 'SliderVal').val();
+                //     change(arr);
+                //     updateobj();
+                // })
+            }
 
-            $("#ex1").slider();
-            $("#ex1").on("slide", function(slideEvt) {
-                $("#ex1SliderVal").val(slideEvt.value);
-            });
-            var mySlider1 = $("#ex1").slider();
-            $('#ex1SliderVal').change(function(){
-                mySlider1.slider('setValue',parseFloat($('#ex1SliderVal').val()));
-            });
-            $("#ex1").on('slideStop',function(){
-                arr[0] = $('#ex1SliderVal').val();
-                change(arr);
-                updateobj();
-            })
-
-
-            $("#ex2").slider();
-            $("#ex2").on("slide", function(slideEvt) {
-                $("#ex2SliderVal").val(slideEvt.value);
-            });
-            var mySlider2 = $("#ex2").slider();
-            $('#ex2SliderVal').change(function(){
-                mySlider2.slider('setValue',parseFloat($('#ex2SliderVal').val()));
-            })
-            $("#ex2").on('slideStop',function(){
-                arr[1] = $('#ex2SliderVal').val();
-                change(arr);
-                updateobj();
-            })
-
-            $("#ex3").slider();
-            $("#ex3").on("slide", function(slideEvt) {
-                $("#ex3SliderVal").val(slideEvt.value);
-            });
-            var mySlider3 = $("#ex3").slider();
-            $('#ex3SliderVal').change(function(){
-                mySlider3.slider('setValue',parseFloat($('#ex3SliderVal').val()));
-            })
-            $("#ex3").on('slideStop',function(){
-                arr[2] = $('#ex3SliderVal').val();
-                change(arr);
-                updateobj();
-            })
-
-            $("#ex4").slider();
-            $("#ex4").on("slide", function(slideEvt) {
-                $("#ex4SliderVal").val(slideEvt.value);
-            });
-            var mySlider4 = $("#ex4").slider();
-            $('#ex4SliderVal').change(function(){
-                mySlider4.slider('setValue',parseFloat($('#ex4SliderVal').val()));
-            })
-            $("#ex4").on('slideStop',function(){
-                arr[3] = $('#ex4SliderVal').val();
-                change(arr);
-                updateobj();
-            })
+            RightSlider(1);
+            RightSlider(2);
+            RightSlider(3);
+            RightSlider(4);
+            function PhoneChoose(){
+                var PhoneBtn = $('.PhoneBtn input');
+                var PhoneSlider = $('.sliderPart');
+                PhoneBtn.each(function(i){
+                    $(this).click(function(){
+                        PhoneSlider.hide();
+                        PhoneSlider.eq(i).show();
+                    })
+                })
+            }
+            PhoneChoose();
         })

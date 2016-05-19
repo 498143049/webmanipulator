@@ -7,15 +7,29 @@ html,body{
     background: url(../blur-bg.jpg);
     height: 100%;
 }
-    @media screen and (max-device-width:680px){
+    @media screen and (max-device-width:900px){
         .RightOne,.RightThree,.PageTitle{
             display: none;
         }
+        .RightOne,.RightTwo,.RightThree{
+            background: url(../images/bgPart2.png);
+        }
         .Right{
-            width: 300px;
+            width: 100%;
+            position: relative;
         }
         .RightTwo{
             background: none;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background: #404E5B;
+        }
+        .RightTwo span{
+            color: white;
+        }
+        .sliderPart{
+            display: none;
         }
         .LittleTitle{
             display: none;
@@ -32,14 +46,37 @@ html,body{
             width: 100%;
             margin-left: 0px;
         }
+        .PhoneBtn{
+            display: block;
+        }
+        .slider.slider-horizontal{
+            width: 280px!important;
+        }
+            .sliderPart{
+                padding: 10px 0;
+                text-align: center;
+            }
     }
-    @media screen and (min-device-width:1000px){
+    @media screen and (min-device-width:900px) and (max-device-width:1300px){
+        .sliderPart span{
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .sliderSpan{
+            display: none;
+        }
+        .RightOne,.RightThree,.PageTitle{
+            display: block;
+        }
         .Right{
             width: 30%;
+            position: absolute;
+            right: 0;
+            top: 64px;
         }
         div#canvas3d{
             width: 69%;
-            height: 611px;
+            height: 678px;
             margin-left: 20px;
         }
         .RightOne,.RightTwo,.RightThree{
@@ -53,6 +90,51 @@ html,body{
             width: 69%;
             margin-left: 20px;
         }
+        .PhoneBtn{
+            display: none;
+        }
+            .sliderPart{
+                padding-bottom: 20px;
+                text-align: center;
+            }
+    }
+    @media screen and (min-device-width:1300px){
+        .RightOne,.RightThree,.PageTitle{
+            display: block;
+        }
+        .Right{
+            width: 30%;
+            position: absolute;
+            right: 0;
+            top: 64px;
+        }
+        div#canvas3d{
+            width: 69%;
+            height: 678px;
+            margin-left: 20px;
+        }
+        .RightOne,.RightTwo,.RightThree{
+            margin: 10px 20px 15px;
+            background: url(../images/bgPart2.png);
+        }
+        #ex1Slider .slider-selection {
+            background: #BABABA;
+        }
+        .CanvasTitle{
+            width: 69%;
+            margin-left: 20px;
+        }
+        .sliderPart span{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .PhoneBtn{
+            display: none;
+        }
+            .sliderPart{
+                padding-bottom: 20px;
+                text-align: center;
+            }
     }
 
             div#canvas3d{
@@ -64,7 +146,6 @@ html,body{
             .PageTitle{
                 text-align: center;
                 background: url(../images/bgPart1.png) repeat;
-                font-family: "Microsoft YaHei";
             }
             .PageTitle p{
                 padding: 10px 0;
@@ -78,18 +159,10 @@ html,body{
             .RightOne table td{
                 border: none!important;
             }
-            .sliderPart{
-                padding-bottom: 20px;
-                text-align: center;
-            }
             #ex1SliderVal,#ex2SliderVal,#ex3SliderVal,#ex4SliderVal{
                 width: 50px;
                 color: #333;
                 text-align: center;
-            }
-            .sliderPart span{
-                margin-left: 10px;
-                margin-right: 10px;
             }
             .LittleTitle{
                 background: none;
@@ -121,11 +194,7 @@ html,body{
             .Inverse{
                 padding-bottom: 10px;
             }
-            .Right{
-                position: absolute;
-                right: 0;
-                top: 64px;
-            }
+            
             .CanvasTitle{
                 background: url(../images/bgPart2.png);
                 color: white;
@@ -136,4 +205,14 @@ html,body{
                 box-shadow: 0 1px 0 0 rgba(255,255,255,.12);
                 -webkit-transform: translate3d(0,0,0);
                 transform: translate3d(0,0,0);
+            }
+            .PhoneBtn{
+                position: fixed;
+                right: 20px;
+                top: 50%;
+                margin-top: -93px;
+            }
+            .PhoneBtn input{
+                display: block;
+                margin: 10px 0;
             }

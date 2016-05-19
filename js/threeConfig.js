@@ -14,7 +14,7 @@ function initThree() {
   renderer.setSize(width, height); //指定渲染器的高宽（和画布框大小一致）
   document.getElementById('canvas3d').appendChild(renderer.domElement); //追加 【canvas】 元素到 【canvas3d】 元素中。
   // renderer.setClearColorHex(0xFFFFFF, 1.0);//设置canvas背景色(clearColor)
-  renderer.setClearColor(0xAAAAAA);
+  renderer.setClearColor(0xFFFFFF);
   // renderer.alpha=true;
 }
 
@@ -26,7 +26,7 @@ function initCamera() {
 
 function initScene() {
   scene = new THREE.Scene();
-  var grid = new THREE.GridHelper( 1000, 10 );
+  var grid = new THREE.GridHelper( 1000, 50 );
   grid.rotation.set(1.58,0,0);
   scene.add( grid );
   //对场景进行大小变化以求得适应的大小

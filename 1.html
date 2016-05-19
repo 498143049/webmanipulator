@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-slider.css">
+    <script src="js/jQuery-2.2.0.min.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+    <script>
+    $(function(){
+		$("#ex6").slider();
+		$("#ex6").on("slide", function(slideEvt) {
+			$("#ex6SliderVal").val(slideEvt.value);
+		});
+		var mySlider = $("#ex6").slider();
+		$('#ex6SliderVal').change(function(){
+
+		mySlider.slider('setValue',parseFloat($('#ex6SliderVal').val()));
+		})
+    })
+    </script>
+    <style>
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+    </style>
+</head>
+<body>
+	
+<input id="ex6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="0.1" data-slider-value="50" />
+<span id="ex6CurrentSliderValLabel"><input id="ex6SliderVal" value= "50"></span>
+</body>
+</html>

@@ -10,14 +10,13 @@
         <script src="js/kinenamatis.js"></script>
         <script src="js/threeConfig.js"></script>
         <script src="js/gui.js"></script>
+        <script src="js/jquery.mousewheel.js"></script>
         <!-- bootstrup slider -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-slider.css">
         <script src="js/bootstrap-slider.js"></script>
-
-        <link rel="stylesheet" href="css/style.css">
         <script src = "js/js.js"></script>
-
+        <link rel="stylesheet" href="css/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
 
@@ -29,7 +28,7 @@
         <p class="CanvasTitle">Scara robot</p>
         <div id="canvas3d"></div>
         <div class="Right">
-            <div class="RightOne">
+           <!--  <div class="RightOne">
                 <p class="LittleTitle">DH Parametes</p>
                 <table class="table table-bordered">
                     <tr>
@@ -57,10 +56,10 @@
                         <td>1</td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
             <div class="RightTwo">
                 <p class="LittleTitle">Kinematics</p>
-                <div class="sliderPart">
+                <div class="sliderPart" style="display: block;">
                     <span>-180</span><input id="ex1" type="text" data-slider-min="-180" data-slider-max="180" data-slider-step="0.1" data-slider-value="50" /><span>180</span>
                     <span id="ex1CurrentSliderValLabel" class="sliderSpan">V: <input id="ex1SliderVal" value= "50" class="sliderInput"></span>
                 </div>
@@ -86,6 +85,12 @@
                     <p>X: <input type="text" value="0"> Y: <input type="text" value="0"> Z: <input type="text" value="0"></p>
                     <input type="button" value="Start" class="InverseBtn btn btn-primary">
                 </div>
+            </div>
+            <div class="PhoneBtn">
+                <input type="button" value="1" class="btn btn-primary">
+                <input type="button" value="2" class="btn btn-primary">
+                <input type="button" value="3" class="btn btn-primary">
+                <input type="button" value="4" class="btn btn-primary">
             </div>
         </div>
     </body>

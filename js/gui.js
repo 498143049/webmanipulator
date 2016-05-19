@@ -70,105 +70,106 @@ function change(theta){
     }
   }
 }
-function Add_Event() {
-  $("#canvas3d").bind('mousewheel', function(event) {
-    // event = event || window.event;
-    event.preventDefault();
-    var delta = 0;
-    if (event.wheelDelta) {
-      // WebKit / Opera / Explorer 9
-    delta = event.wheelDelta && (event.wheelDelta > 0 ? "mouseup" : "mousedown");
-    console.log(direction);
-    } else if (event.detail) {
-      // Firefox
-      delta = event.detail * 10;
+var CountTime=0;
+var diff = [];
+function changeArray(theta1,theta2){
+  diff = [];
+  CountTime=0;
+  diff_Array(theta1,theta2,diff);
+  setTimeout(_change_time(theta1),200);
+}
+function change_time(theta1){
+  mul_Array(theta1,diff);
+  change(theta1);
+  updateobj();
+  CountTime++;
+  if(CountTime<=10)
+  {
+  setTimeout(_change_time(theta1),50);
+  }
+}
+function _change_time(_theta1){
+       return function(){
+             change_time(_theta1);
+       }
+}
+function diff_Array(aArr,bArr,diff){   //第一个数组减去第二个数组
+    for(var e in aArr){
+            diff.push((aArr[e]-bArr[e])/10);
     }
-    console.log(delta);
-    return false;
-  });
+}
+function mul_Array(aArr,bArr){   //第一个数组减去第二个数组
+    for(var e in aArr){
+            aArr[e]=aArr[e]-bArr[e];
+        }
+}
+function Add_Event() {
+$("#canvas3d").mousedown(onMouseDown);
+$('#canvas3d').mousewheel(function(event, delta, deltaX, deltaY) {
+  event.preventDefault();
+      if(delta>0)
+        zoom(100);
+      else
+        zoom(-100);
+});
 }
 function zoom ( delta1 ) {
    var delta=new THREE.Vector3( 0, 0, delta1 )
     center = new THREE.Vector3();
     var normalMatrix = new THREE.Matrix3();
     var distance = camera.position.distanceTo( center );
-
     delta.multiplyScalar( distance * 0.001 );
-
     if ( delta.length() > distance ) return;
-
     delta.applyMatrix3( normalMatrix.getNormalMatrix( camera.matrix ) );
-
     camera.position.add( delta );
+    rendererFun();
+  };
+var pointer = new THREE.Vector2();
+var pointerOld = new THREE.Vector2();
+var domElement = ( domElement !== undefined ) ? domElement : document;
+function onMouseDown(event) {
+    pointerOld.set( event.clientX, event.clientY );
+    domElement.addEventListener( 'mousemove', onMouseMove, false );
+    domElement.addEventListener( 'mouseup', onMouseUp, false );
+    domElement.addEventListener( 'mouseout', onMouseUp, false );
+    domElement.addEventListener( 'dblclick', onMouseUp, false );
+}
+function onMouseMove( event ) {
+    pointer.set( event.clientX, event.clientY );
+
+    var movementX = pointer.x - pointerOld.x;
+    var movementY = pointer.y - pointerOld.y;
+    changePos( new THREE.Vector3( - movementX * 0.005, - movementY * 0.005, 0 ) );
+    pointerOld.set( event.clientX, event.clientY );
+}
+var vector = new THREE.Vector3();
+var spherical = new THREE.Spherical();
+function changePos( delta ) {
+    var center = new THREE.Vector3();
+    vector.copy( camera.position ).sub( center );
+
+    spherical.setFromVector3( vector );
+
+    spherical.theta += delta.x;
+    spherical.phi += delta.y;
+
+    spherical.makeSafe();
+
+    vector.setFromSpherical( spherical );
+
+    camera.position.copy( center ).add( vector );
+
+    camera.lookAt( center );
 
     rendererFun();
 
   };
-  
-  // function onMouseDown( event ) {
-
-  //   if ( scope.enabled === false ) return;
-
-  //   if ( event.button === 0 ) {
-
-  //     state = STATE.ROTATE;
-
-  //   } else if ( event.button === 1 ) {
-
-  //     state = STATE.ZOOM;
-
-  //   } else if ( event.button === 2 ) {
-
-  //     state = STATE.PAN;
-
-  //   }
-
-  //   pointerOld.set( event.clientX, event.clientY );
-
-  //   domElement.addEventListener( 'mousemove', onMouseMove, false );
-  //   domElement.addEventListener( 'mouseup', onMouseUp, false );
-  //   domElement.addEventListener( 'mouseout', onMouseUp, false );
-  //   domElement.addEventListener( 'dblclick', onMouseUp, false );
-
-  // }
-
-  // function onMouseMove( event ) {
-
-  //   if ( scope.enabled === false ) return;
-
-  //   pointer.set( event.clientX, event.clientY );
-
-  //   var movementX = pointer.x - pointerOld.x;
-  //   var movementY = pointer.y - pointerOld.y;
-
-  //   if ( state === STATE.ROTATE ) {
-
-  //     scope.rotate( new THREE.Vector3( - movementX * 0.005, - movementY * 0.005, 0 ) );
-
-  //   } else if ( state === STATE.ZOOM ) {
-
-  //     scope.zoom( new THREE.Vector3( 0, 0, movementY ) );
-
-  //   } else if ( state === STATE.PAN ) {
-
-  //     scope.pan( new THREE.Vector3( - movementX, movementY, 0 ) );
-
-  //   }
-
-  //   pointerOld.set( event.clientX, event.clientY );
-
-  // }
-
-  // function onMouseUp( event ) {
-
-  //   domElement.removeEventListener( 'mousemove', onMouseMove, false );
-  //   domElement.removeEventListener( 'mouseup', onMouseUp, false );
-  //   domElement.removeEventListener( 'mouseout', onMouseUp, false );
-  //   domElement.removeEventListener( 'dblclick', onMouseUp, false );
-
-  //   state = STATE.NONE;
-
-  // }
+function onMouseUp( event ) {
+    domElement.removeEventListener( 'mousemove', onMouseMove, false );
+    domElement.removeEventListener( 'mouseup', onMouseUp, false );
+    domElement.removeEventListener( 'mouseout', onMouseUp, false );
+    domElement.removeEventListener( 'dblclick', onMouseUp, false );
+  }
 function Load_config() {
   $.getJSON("http://7xt8mz.com2.z0.glb.clouddn.com/ScaraconfigNew.json", Load_init)
   Add_Event();
