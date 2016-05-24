@@ -159,7 +159,7 @@ html,body{
             .RightOne table td{
                 border: none!important;
             }
-            #ex1SliderVal,#ex2SliderVal,#ex3SliderVal,#ex4SliderVal{
+            #ex1SliderVal,#ex2SliderVal,#ex3SliderVal,#ex4SliderVal,#ex0SliderVal,#ex5SliderVal{
                 width: 50px;
                 color: #333;
                 text-align: center;

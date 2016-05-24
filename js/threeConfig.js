@@ -4,7 +4,7 @@ var camera;
 //设置场景 初始化场景，Object 
 var scene;
 //初始化render对象
-
+  var line;
 function initThree() {
   width = document.getElementById('canvas3d').clientWidth; //获取画布「canvas3d」的宽
   height = document.getElementById('canvas3d').clientHeight; //获取画布「canvas3d」的高
@@ -26,12 +26,27 @@ function initCamera() {
 
 function initScene() {
   scene = new THREE.Scene();
-  var grid = new THREE.GridHelper( 1000, 50 );
-  grid.rotation.set(1.58,0,0);
-  scene.add( grid );
+  var grid = new THREE.GridHelper(1000, 50);
+  grid.rotation.set(1.58, 0, 0);
+  scene.add(grid);
+  //
+  var material = new THREE.LineBasicMaterial({
+    color: 0x0000ff
+  });
+
+  var geometry = new THREE.Geometry();
+
+  geometry.vertices.push(
+    new THREE.Vector3(0, 0, 0)
+  );
+
+  line = new THREE.Line(geometry, material);
+   
+  scene.add(line);
+
   //对场景进行大小变化以求得适应的大小
   scene.scale.set(0.06, 0.06, 0.08);
-  scene.rotation.set(-1.58,0,0);
+  scene.rotation.set(-1.58, 0, 0);
 }
 //渲染对象
 function rendererFun() {
@@ -44,5 +59,16 @@ function threeStart() {
   initThree();
   initCamera();
   initScene();
+  // line.geometry.vertices.push(
+  //   new THREE.Vector3(1000, 0, 1000)
+  // );
+  rendererFun();
+  // line.geometry.vertices.push(
+  //   new THREE.Vector3(0, 0, 1000)
+  // );
+ 
+
+
+
   rendererFun();
 }
