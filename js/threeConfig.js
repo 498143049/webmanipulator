@@ -20,13 +20,13 @@ function initThree() {
 
 function initCamera() {
   camera = new THREE.PerspectiveCamera(45, width / height, 1, 5000); //设置透视投影的相机,默认情况下相机的上方向为Y轴，右方向为X轴，沿着Z轴朝里（视野角：fov 纵横比：aspect 相机离视体积最近的距离：near 相机离视体积最远的距离：far）
-  camera.position.set( -1.70, 40, 78.30 );
-  camera.rotation.set( -0.4, 0, 0);
+  camera.position.set(3.73104727684499, 38.2038025976502, 85.65486007198572);
+  camera.rotation.set( -0.419, 0.039, 0.017);
 }
 
 function initScene() {
   scene = new THREE.Scene();
-  var grid = new THREE.GridHelper(1000, 50);
+  var grid = new THREE.GridHelper(3*robot.axis.xmax, robot.axis.xmax/5);
   grid.rotation.set(1.58, 0, 0);
   scene.add(grid);
   //
@@ -45,7 +45,9 @@ function initScene() {
   scene.add(line);
 
   //对场景进行大小变化以求得适应的大小
-  scene.scale.set(0.06, 0.06, 0.08);
+  // scene.scale.set(0.055, 0.055, 0.055*7/5);
+  scene.scale.set(27.5/robot.axis.xmax, 27.5/robot.axis.ymax, 27.5/robot.axis.zmax);
+  scene.position.set(0, 0, 0);
   scene.rotation.set(-1.58, 0, 0);
 }
 //渲染对象

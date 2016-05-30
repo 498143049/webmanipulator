@@ -7,11 +7,11 @@ html,body{
     background: url(../blur-bg.jpg);
     height: 100%;
 }
-    @media screen and (max-device-width:900px){
+    @media screen and (max-width:900px){
         .RightOne,.RightThree,.PageTitle{
             display: none;
         }
-        .RightOne,.RightTwo,.RightThree{
+        .RightOne,.RightTwo,.RightThree,.RightFour{
             background: url(../images/bgPart2.png);
         }
         .Right{
@@ -50,14 +50,34 @@ html,body{
             display: block;
         }
         .slider.slider-horizontal{
-            width: 280px!important;
+            width: 200px!important;
         }
-            .sliderPart{
-                padding: 10px 0;
-                text-align: center;
-            }
+        .sliderPart{
+            padding: 10px 0;
+            text-align: center;
+        }
+        .RightFour{
+            position: fixed;
+            left: 10px;
+            background: none;
+            bottom: 40px;
+        }
+        .RightFive{
+            position: fixed;
+            left: 35%;
+            background: none;
+            bottom: 40px;
+            
+        }
+        #message strong{
+            color: red;
+        }
+
+        .RightFour input{
+            display: block;
+        }
     }
-    @media screen and (min-device-width:900px) and (max-device-width:1300px){
+    @media screen and (min-width:900px) and (max-width:1300px){
         .sliderPart span{
             margin-left: 5px;
             margin-right: 5px;
@@ -79,7 +99,7 @@ html,body{
             height: 678px;
             margin-left: 20px;
         }
-        .RightOne,.RightTwo,.RightThree{
+        .RightOne,.RightTwo,.RightThree,.RightFour,.RightFive{
             margin: 10px 20px 15px;
             background: url(../images/bgPart2.png);
         }
@@ -98,7 +118,7 @@ html,body{
                 text-align: center;
             }
     }
-    @media screen and (min-device-width:1300px){
+    @media screen and (min-width:1300px){
         .RightOne,.RightThree,.PageTitle{
             display: block;
         }
@@ -110,10 +130,10 @@ html,body{
         }
         div#canvas3d{
             width: 69%;
-            height: 678px;
+            height: 650px;
             margin-left: 20px;
         }
-        .RightOne,.RightTwo,.RightThree{
+        .RightOne,.RightTwo,.RightThree,.RightFour,.RightFive{
             margin: 10px 20px 15px;
             background: url(../images/bgPart2.png);
         }
@@ -131,11 +151,16 @@ html,body{
         .PhoneBtn{
             display: none;
         }
-            .sliderPart{
-                padding-bottom: 20px;
-                text-align: center;
-            }
+        .sliderPart{
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
     }
+            .Sliderspan{
+            display: inline-block;
+            width: 29px;
+            }
 
             div#canvas3d{
                 margin-top: -10px;
@@ -191,6 +216,11 @@ html,body{
                 margin: 0 auto;
                 display: block;
             }
+            .funBtn{
+                 width: 100px;
+                margin: 0 auto;
+                display: inline-block;
+            }
             .Inverse{
                 padding-bottom: 10px;
             }
@@ -210,9 +240,24 @@ html,body{
                 position: fixed;
                 right: 20px;
                 top: 50%;
-                margin-top: -93px;
             }
             .PhoneBtn input{
                 display: block;
                 margin: 10px 0;
+            }
+            .RightFour{
+                text-align: center;
+            }
+            .RightFour input{
+                margin: 20px 0;
+            }
+            #message strong{
+                font-size: 20px;
+                font-family: "Microsoft Yahei";
+                 color: red;
+
+            }
+            #message {
+               text-align: center;
+               padding: 10px;
             }
